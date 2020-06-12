@@ -3,13 +3,18 @@
 
 	let searchTerm = '';
 	let searchingImg = false;
+	let images = [];
 
 	async function formSubmitted() {
 		console.log(searchTerm);
 		searchingImg = true;
 
-		const images = await searchImage(searchTerm);
+		images = [];
+
+		images = await searchImage(searchTerm);
 		console.log(images);
+
+		searchingImg = false;
 	}
 </script>
 
@@ -27,5 +32,9 @@
 		<img id="searchingImg" src="../searching.gif" alt="Searching...">
 	{/if}
 
-	<section class="images"></section>
+	<section class="images">
+		{#each images as image}
+			<img src={image} alt={searchTerm}>
+		{/each}
+	</section>
 </div>
