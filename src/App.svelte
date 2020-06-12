@@ -29,7 +29,7 @@
 	</form>
 
 	{#if searchingImg}
-		<img id="searchingImg" src="../searching.gif" alt="Searching...">
+		<img id="searchingImg" src="searching.gif" alt="Searching...">
 	{/if}
 
 	<section class="images">
