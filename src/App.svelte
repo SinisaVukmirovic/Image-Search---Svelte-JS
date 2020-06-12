@@ -1,8 +1,15 @@
 <script>
-	let searchTerm = '';
+	import searchImage from './apiCall.js';
 
-	function formSubmitted() {
+	let searchTerm = '';
+	let searchingImg = false;
+
+	async function formSubmitted() {
 		console.log(searchTerm);
+		searchingImg = true;
+
+		const images = await searchImage(searchTerm);
+		console.log(images);
 	}
 </script>
 
@@ -16,7 +23,9 @@
 		<button type="submit">Search</button>
 	</form>
 
-	<img id="searchingImg" src="../searching.gif" alt="Searching...">
+	{#if searchingImg}
+		<img id="searchingImg" src="../searching.gif" alt="Searching...">
+	{/if}
 
 	<section class="images"></section>
 </div>
